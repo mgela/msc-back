@@ -1,29 +1,12 @@
-const mongoose = require('mongoose');
-mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost/MSC')
-
-const db = mongoose.connection;
+const mongoose = require('../db.js');
 
 
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log('connected to DB');
+const userSchema = new mongoose.Schema({
+  coachId: {type: String, lowercase: true, unique: true, required: true},
+  fname: {type: String, lowercase: true, unique: false, required: true},
+  lname: {type: String, lowercase: true, unique: false, required: true},
+  email: {type: String, lowercase: true, unique: false, required: true},
+  pic: {type: String, lowercase: true, unique: false, required: true},
 });
 
-const schema = mongoose.Schema({
-  coachId: Number,
-  name: String,
-  lastName: String,
-  email: String,
-  pic: String,
-
-})
-
-const Event = mongoose.model('MSC', schema);
-
-
-// models&queries here
-
-module.exports = {
-  
-}
+const UserModel = mongoose.model('usersMSC', userSchema);
