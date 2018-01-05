@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost/EventsAssessment')
+mongoose.connect('mongodb://localhost/MSC')
 
 const db = mongoose.connection;
 
@@ -18,3 +18,12 @@ const schema = mongoose.Schema({
   pic: String,
 
 })
+
+const Event = mongoose.model('MSC', schema);
+
+
+// models&queries here
+
+module.exports = {
+  
+}
