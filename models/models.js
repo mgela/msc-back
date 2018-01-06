@@ -9,4 +9,15 @@ const userSchema = new mongoose.Schema({
   pic: {type: String, lowercase: true, unique: false, required: true},
 });
 
+exports.saveNewUser = newUserDetails => {
+  const {fname, lname, username, password, address, flat, initials, online} = newUserDetails;
+  const newUser = new UserModel({
+    fname,
+    lname,
+    email,
+    pic,
+  });
+  return newUser.save();
+};
+
 const UserModel = mongoose.model('usersMSC', userSchema);

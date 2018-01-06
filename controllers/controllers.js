@@ -2,5 +2,6 @@
 const Model = require('../models/models');
 
 exports.trial = async (ctx, next) => {
-  console.log(23);
+ ctx.body = 'server working'
+  return ctx;
 }
