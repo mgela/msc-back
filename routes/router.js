@@ -3,6 +3,7 @@ const router = new Router();
 
 const Controller = require('../controllers/controllers');
 
-// router.get('/endpoint', Controller.trial);
+
+router.get('/endpoint', Controller.trial);
 
 module.exports = router;
