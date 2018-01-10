@@ -4,6 +4,7 @@ const router = new Router();
 const Controller = require('../controllers/controllers');
 
 
-router.get('/endpoint', Controller.trial);
+router.post('/signup', Controller.trial);
+router.get('/signup', Controller.trial)
 
 module.exports = router;
