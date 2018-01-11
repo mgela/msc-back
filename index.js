@@ -8,18 +8,18 @@ require('./db');
 
 app
   .use(cors({origin: '*'}))
-  .use(async (ctx, next) => {
-    try {
-      await next();
-    } catch (e) {
-      ctx.status = 500;
-      if (e.message) {
-        ctx.body = {
-          errors: [e.message],
-        };
-      }
-    }
-  })
+  // .use(async (ctx, next) => {
+  //   try {
+  //     await next();
+  //   } catch (e) {
+  //     ctx.status = 500;
+  //     if (e.message) {
+  //       ctx.body = {
+  //         errors: [e.message],
+  //       };
+  //     }
+  //   }
+  // })
   .use(bodyParser())
   .use(router.routes())
   .use(router.allowedMethods());
