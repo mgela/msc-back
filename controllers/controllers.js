@@ -1,10 +1,17 @@
 'use strict';
-const parse = require('co-body');
-const Model = require('../models/models');
+
+const UserModel = require('../models/models');
 
 exports.trial = async (ctx, next) => {
-  console.log(23);
-  console.log(ctx.request.body);
+  try {
+    console.log(ctx.request.body.email, "email");
+    const user = await UserModel.checkUser(ctx.request.body.email)
+    console.log(user, "there");
+    if (user === undefined) UserModel.createUser(ctx.request.body)
+
+  }catch (e){
+
+  }
 
 }
 

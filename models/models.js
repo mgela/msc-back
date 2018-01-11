@@ -1,23 +1,32 @@
 const mongoose = require('../db.js');
 
-
 const userSchema = new mongoose.Schema({
-  coachId: {type: String, lowercase: true, unique: true, required: true},
-  fname: {type: String, lowercase: true, unique: false, required: true},
-  lname: {type: String, lowercase: true, unique: false, required: true},
-  email: {type: String, lowercase: true, unique: false, required: true},
-  pic: {type: String, lowercase: true, unique: false, required: true},
-});
 
-exports.saveNewUser = newUserDetails => {
-  const {fname, lname, username, password, address, flat, initials, online} = newUserDetails;
-  const newUser = new UserModel({
-    fname,
-    lname,
-    email,
-    pic,
-  });
-  return newUser.save();
-};
+  username: {type: String, unique: true},
+  email: String,
+  password: String,
+}, {versionKey: 'versionKey'});
 
 const UserModel = mongoose.model('usersMSC', userSchema);
+const UsersFB = mongoose.model('usersFB', userSchema);
+
+UserModel.findOrCreate = async (userData) => {
+  const user = await UserModel.checkUser(userData.email);
+  if (!user) return await User.createUser(userData);
+  return user;
+}
+
+UserModel.checkUser = (userEmail) => {
+  UserModel.findOne({email: userEmail})
+}
+
+UserModel.createUser = (userData) => {
+  const user = new UserModel({
+    username: userData.username,
+    email: userData.email,
+    password: userData.password,
+  })
+  return user.save();
+}
+
+module.exports = UserModel;
