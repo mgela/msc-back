@@ -4,11 +4,15 @@ const cors = require('koa-cors');
 
 const app = new Koa();
 const router = require('./routes/router');
+const logger = require('koa-logger');
+
+
 require('./db');
 
 const PORT = process.env.PORT || 8080;
 
 app
+  .use(logger())
   .use(cors({origin: '*'}))
   // .use(async (ctx, next) => {
   //   try {
