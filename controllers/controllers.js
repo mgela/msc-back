@@ -8,6 +8,7 @@ exports.trial = async (ctx, next) => {
     const user = await UserModel.checkUser(ctx.request.body.email)
     console.log(user, "there");
     if (user === undefined) UserModel.createUser(ctx.request.body)
+    ctx.response.body = 'ok';
   }catch (e){
 
   }

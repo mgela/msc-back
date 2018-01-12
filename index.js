@@ -6,6 +6,8 @@ const app = new Koa();
 const router = require('./routes/router');
 require('./db');
 
+const PORT = process.env.PORT || 8080;
+
 app
   .use(cors({origin: '*'}))
   // .use(async (ctx, next) => {
@@ -24,7 +26,8 @@ app
   .use(router.routes())
   .use(router.allowedMethods());
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
   //eslint-disable-next-line
-  console.log('Koa app listening on port 4000')
+  console.log('Koa app listening on ' + `${PORT}`
+  )
 });
