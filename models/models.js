@@ -3,7 +3,7 @@ const mongoose = require('../db.js');
 const userSchema = new mongoose.Schema({
 
   username: {type: String, unique: true},
-  email: String,
+  email: {type: String, unique: true},
   password: String,
 }, {versionKey: 'versionKey'});
 

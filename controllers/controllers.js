@@ -2,19 +2,26 @@
 
 const UserModel = require('../models/models');
 
-exports.trial = async (ctx, next) => {
+exports.loginCustom = async (ctx, next) => {
   try {
-    console.log(ctx.request.body.email, "email");
     const user = await UserModel.checkUser(ctx.request.body.email)
-    console.log(user, "there");
     if (user === undefined) UserModel.createUser(ctx.request.body)
-    ctx.response.body = 'ok';
+    ctx.response.body = 'Ok user Saved';
   }catch (e){
-
+    console.log(e)
   }
-
 }
-
-exports.second = async (ctx, next) => {
-
+exports.loginFacebook = async (ctx, next) => {
+  try {
+    console.log("facebook")
+  }catch (e){
+    console.log(e)
+  }
+}
+exports.loginGoogle = async (ctx, next) => {
+  try {
+    console.log("google")
+  }catch (e){
+    console.log(e)
+  }
 }
