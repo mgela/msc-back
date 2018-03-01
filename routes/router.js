@@ -5,9 +5,9 @@ const parse = require('co-body');
 const Controller = require('../controllers/controllers');
 
 
-router.post('/signup', Controller.loginCustom)
-router.post('/signupFacebook', Controller.loginFacebook)
-router.post('/signupGoogle', Controller.loginGoogle)
+router.post('/userSignup', Controller.loginCustom)
+router.post('/coachSignUp', Controller.coachSignUp)
+
 
 
 
